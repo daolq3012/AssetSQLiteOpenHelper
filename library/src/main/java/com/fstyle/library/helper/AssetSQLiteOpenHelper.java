@@ -1,4 +1,4 @@
-package com.fstyle.assetsqliteopenhelper.helper;
+package com.fstyle.library.helper;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.db.SupportSQLiteOpenHelper;

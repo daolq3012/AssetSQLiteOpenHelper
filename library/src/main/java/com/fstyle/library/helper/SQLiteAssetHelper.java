@@ -1,4 +1,4 @@
-package com.fstyle.assetsqliteopenhelper.helper;
+package com.fstyle.library.helper;
 
 /*
  * Copyright (C) 2011 readyState Software Ltd, 2007 The Android Open Source Project

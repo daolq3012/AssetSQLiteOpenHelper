@@ -6,7 +6,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import com.fstyle.assetsqliteopenhelper.database.dao.TestDao;
 import com.fstyle.assetsqliteopenhelper.database.entity.TestEntity;
-import com.fstyle.assetsqliteopenhelper.helper.AssetSQLiteOpenHelperFactory;
+import com.fstyle.library.helper.AssetSQLiteOpenHelperFactory;
 
 /**
  * Created by daolq on 11/15/17.

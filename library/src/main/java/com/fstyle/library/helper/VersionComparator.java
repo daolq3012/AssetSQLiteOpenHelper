@@ -1,4 +1,4 @@
-package com.fstyle.assetsqliteopenhelper.helper;
+package com.fstyle.library.helper;
 
 import android.util.Log;
 import java.util.Comparator;
