@@ -27,8 +27,8 @@ dependencies {
 ```
 
 ### How to use:
-#### 1. Put your SQLite DB database_name.db into the assets/databases folder
-#### 2. in your AppDatabase class, modify your Room's DB creation code accordingly:
+1. Put your SQLite DB database_name.db into the ``assets/databases`` folder
+2. in your ``AppDatabase`` class, modify your Room's DB creation code accordingly:
 ```java
     Room.databaseBuilder(context.getApplicationContext(),
                          AppDatabase.class,
