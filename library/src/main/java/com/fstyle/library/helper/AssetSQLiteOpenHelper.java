@@ -14,15 +14,17 @@ import android.support.annotation.RequiresApi;
 class AssetSQLiteOpenHelper implements SupportSQLiteOpenHelper {
     private final OpenHelper mDelegate;
 
-    AssetSQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,
+    AssetSQLiteOpenHelper(Context context, String name,
+                          String assetsDirectory, SQLiteDatabase.CursorFactory factory,
             int version, DatabaseErrorHandler errorHandler, Callback callback) {
-        mDelegate = createDelegate(context, name, factory, version, errorHandler, callback);
+        mDelegate = createDelegate(context, name, assetsDirectory, factory, version, errorHandler, callback);
     }
 
     private OpenHelper createDelegate(Context context, String name,
-            SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler,
+                                      String assetsDirectory,
+                                      SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler,
             final Callback callback) {
-        return new OpenHelper(context, name, factory, version, errorHandler) {
+        return new OpenHelper(context, name, assetsDirectory, factory, version, errorHandler) {
             @Override
             public final void onCreate(SQLiteDatabase sqLiteDatabase) {
                 mWrappedDb = new FrameworkSQLiteDatabase(sqLiteDatabase);
@@ -82,9 +84,9 @@ class AssetSQLiteOpenHelper implements SupportSQLiteOpenHelper {
 
         FrameworkSQLiteDatabase mWrappedDb;
 
-        OpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version,
-                DatabaseErrorHandler errorHandler) {
-            super(context, name, null, factory, version, errorHandler);
+        OpenHelper(Context context, String name, String assetsDirectory, SQLiteDatabase.CursorFactory factory, int version,
+                   DatabaseErrorHandler errorHandler) {
+            super(context, name, assetsDirectory, null, factory, version, errorHandler);
         }
 
         SupportSQLiteDatabase getWritableSupportDatabase() {

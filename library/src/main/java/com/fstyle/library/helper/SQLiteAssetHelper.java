@@ -57,7 +57,7 @@ import java.util.zip.ZipInputStream;
 class SQLiteAssetHelper extends SQLiteOpenHelper {
 
     private static final String TAG = SQLiteAssetHelper.class.getSimpleName();
-    private static final String ASSET_DB_PATH = "databases";
+    public static final String ASSET_DB_PATH = "databases";
 
     private final Context mContext;
     private final String mName;
@@ -91,7 +91,8 @@ class SQLiteAssetHelper extends SQLiteOpenHelper {
      * SQL file(s) contained within the application assets folder will be used to
      * upgrade the database
      */
-    public SQLiteAssetHelper(Context context, String name, String storageDirectory,
+    public SQLiteAssetHelper(Context context, String name,
+                             String assetsDirectory, String storageDirectory,
             CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
         super(context, name, factory, version, errorHandler);
 
@@ -103,13 +104,13 @@ class SQLiteAssetHelper extends SQLiteOpenHelper {
         mFactory = factory;
         mNewVersion = version;
 
-        mAssetPath = ASSET_DB_PATH + "/" + name;
+        mAssetPath = assetsDirectory + "/" + name;
         if (storageDirectory != null) {
             mDatabasePath = storageDirectory;
         } else {
             mDatabasePath = context.getApplicationInfo().dataDir + "/databases";
         }
-        mUpgradePathFormat = ASSET_DB_PATH + "/" + name + "_upgrade_%s-%s.sql";
+        mUpgradePathFormat = assetsDirectory + "/" + name + "_upgrade_%s-%s.sql";
     }
 
     /**
@@ -127,7 +128,7 @@ class SQLiteAssetHelper extends SQLiteOpenHelper {
      * upgrade the database
      */
     public SQLiteAssetHelper(Context context, String name, CursorFactory factory, int version) {
-        this(context, name, null, factory, version, null);
+        this(context, name, ASSET_DB_PATH, null, factory, version, null);
     }
 
     /**

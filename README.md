@@ -36,6 +36,16 @@ dependencies {
     .openHelperFactory(new AssetSQLiteOpenHelperFactory())
     .build();
 ```
+Alternatively, if you need precise control over the subfolder under ``assets/`` containing your sqlite database,
+specify the subfolder path as an argument to ``AssetSQLiteOpenHelperFactory`` e.g. if your database is in
+``assets/databases#lang_en`` you would use
+```java
+       Room.databaseBuilder(context.getApplicationContext(),
+                            AppDatabase.class,
+                            "database_name.db")
+       .openHelperFactory(new AssetSQLiteOpenHelperFactory("databases#lang_en"))
+       .build();
+```
 - See samples in this project to show more
 
 ## 👬 Contribution
